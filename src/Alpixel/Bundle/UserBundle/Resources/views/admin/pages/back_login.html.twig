@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ "Identification administrateur" | trans }}</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+        {% stylesheets
+            '../app/Resources/public/css/admin.css'
+        %}
+        <link rel="stylesheet" type="text/css" media="screen" href="{{ asset_url }}" />
+        {% endstylesheets %}
+
+        <link href='//fonts.googleapis.com/css?family=Viga' rel='stylesheet' type='text/css'>
+        <link href='//fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,300,600,700' rel='stylesheet' type='text/css'>
+
+        <link rel="apple-touch-icon" href="{{ asset('images/apple-touch-icon.png') }}" />
+        <link rel="shortcut icon" href="{{ asset('images/favicon.ico') }}" />
+    </head>
+    <body id="login-page">
+        <div id="loginWrapper">
+
+
+            {% include '::front/blocks/messages.html.twig' %}
+
+            <div class="contain-form">
+
+                <form action="{{ path("admin_check") }}" method="post" class="login-form">
+                    <h2>{{ "Connexion" | trans }}</h2>
+
+
+
+                    <input type="hidden" name="_csrf_token"  value="{{ csrf_token }}" />
+                    <input type="text" id="username" name="_username" class="text"  value="" placeholder="login" />
+                    <input type="password" id="password" name="_password" class="text" placeholder="password" />
+
+                    <div class="clearfix remember">
+                        <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
+                        <label for="remember_me">{{ "Se rappeller de moi ?" | trans }}</label>
+                    </div>
+                    <div class="clearfix"></div>
+                    <button type="submit" id="_submit" name="_submit">{{"Se connecter" | trans}}</button>
+                </form>
+
+            </div>
+
+        </div>
+
+
+
+        {#{% javascripts
+            '../app/Resources/public/js/lib/jquery/jquery.js'
+            '../app/Resources/public/js/lib/jquery/jquery-ui.js'
+            '../app/Resources/public/js/lib/underscore.js'
+            '../app/Resources/public/js/lib/bootstrap.min.js'
+            '../app/Resources/public/js/lib/dropzone.js'
+            '../app/Resources/public/js/lib/accounting.min.js'
+            '../app/Resources/public/js/back/outdated.js'
+            '../app/Resources/public/js/back/back.js'
+        %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+
+        <script type="text/javascript">
+            $(function(){
+                $('.login-form').find('input').on('focus',function(){
+                    $('#background').addClass('blurred');
+                    $('#content').addClass('shadowed');
+                });
+            });
+        </script>#}
+    </body>
+</html>
