@@ -2,11 +2,11 @@
 
 namespace Alpixel\Bundle\UserBundle\Handler;
 
-use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\RedirectResponse;
-use Symfony\Component\Security\Http\Authentication\AuthenticationSuccessHandlerInterface;
-use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
+use Symfony\Component\HttpFoundation\RedirectResponse;
+use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\Security\Core\Authentication\Token\TokenInterface;
+use Symfony\Component\Security\Http\Authentication\AuthenticationSuccessHandlerInterface;
 
 class AuthenticationHandler implements AuthenticationSuccessHandlerInterface
 {
@@ -21,7 +21,7 @@ class AuthenticationHandler implements AuthenticationSuccessHandlerInterface
     {
         $back = $request->get('back');
 
-        if (!empty($back) && $back != "/404") {
+        if (!empty($back) && $back != '/404') {
             return new RedirectResponse($back);
         }
 

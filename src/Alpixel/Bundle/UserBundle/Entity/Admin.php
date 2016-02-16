@@ -14,7 +14,7 @@ use FOS\UserBundle\Entity\User as BaseUser;
 class Admin extends BaseUser
 {
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Id
      * @ORM\Column(name="admin_id", type="integer", nullable=false)
@@ -53,12 +53,12 @@ class Admin extends BaseUser
 
     public static function getRoleString($key)
     {
-        $roles = array(
+        $roles = [
             'ROLE_USER'             => 'Simple utilisateur',
             'ROLE_MODERATOR'        => 'Modérateur',
             'ROLE_MODERATOR_LEADER' => 'Chef d\'équipe modérateur',
             'ROLE_SUPER_ADMIN'      => 'Administrateur du site',
-        );
+        ];
 
         if (!empty($roles[$key])) {
             return $roles[$key];
@@ -70,7 +70,7 @@ class Admin extends BaseUser
     /**
      * Gets the value of id.
      *
-     * @return integer
+     * @return int
      */
     public function getID()
     {
@@ -80,7 +80,7 @@ class Admin extends BaseUser
     /**
      * Sets the value of id.
      *
-     * @param integer $id the id
+     * @param int $id the id
      *
      * @return self
      */

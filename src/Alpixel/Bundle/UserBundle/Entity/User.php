@@ -24,11 +24,11 @@ abstract class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
-        $this->pushID               = array();
-        $this->confirmationToken    = sha1(uniqid(uniqid(mt_rand()), true));
-        $this->created              = new \DateTime();
-        $this->activated            = false;
-        $this->enabled              = true;
+        $this->pushID = [];
+        $this->confirmationToken = sha1(uniqid(uniqid(mt_rand()), true));
+        $this->created = new \DateTime();
+        $this->activated = false;
+        $this->enabled = true;
     }
 
     public function getWSSEToken()
@@ -60,7 +60,7 @@ abstract class User extends BaseUser
     /**
      * Gets the value of id.
      *
-     * @return integer
+     * @return int
      */
     public function getID()
     {
@@ -70,7 +70,7 @@ abstract class User extends BaseUser
     /**
      * Sets the value of id.
      *
-     * @param integer $id the id
+     * @param int $id the id
      *
      * @return self
      */

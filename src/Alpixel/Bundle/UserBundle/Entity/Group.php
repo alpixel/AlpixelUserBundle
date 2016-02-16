@@ -14,7 +14,7 @@ use FOS\UserBundle\Model\Group as BaseGroup;
 class Group extends BaseGroup
 {
     /**
-     * @var integer
+     * @var int
      *
      * @ORM\Column(name="id", type="integer", nullable=false)
      * @ORM\Id
@@ -23,7 +23,7 @@ class Group extends BaseGroup
     protected $id;
 
     /**
-     * @var boolean
+     * @var bool
      *
      * @ORM\Column(name="display", type="boolean", nullable=false)
      */
@@ -45,7 +45,7 @@ class Group extends BaseGroup
     /**
      * Get id.
      *
-     * @return integer
+     * @return int
      */
     public function getId()
     {
@@ -55,7 +55,7 @@ class Group extends BaseGroup
     /**
      * Gets the value of display.
      *
-     * @return boolean
+     * @return bool
      */
     public function getDisplay()
     {
@@ -65,7 +65,7 @@ class Group extends BaseGroup
     /**
      * Sets the value of display.
      *
-     * @param boolean $display the display
+     * @param bool $display the display
      *
      * @return self
      */

@@ -13,7 +13,7 @@ class AdminAdmin extends Admin
 {
     public function createQuery($context = 'list')
     {
-        $container       = $this->getConfigurationPool()->getContainer();
+        $container = $this->getConfigurationPool()->getContainer();
         $securityContext = $container->get('security.context');
 
         $query = parent::createQuery($context);
@@ -38,22 +38,21 @@ class AdminAdmin extends Admin
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('id', null, array(
+            ->add('id', null, [
                 'label' => 'ID',
-            ))
-            ->add('username', null, array(
+            ])
+            ->add('username', null, [
                 'label' => 'Nom d\'utilisateur',
-            ))
-            ->add('firstname', null, array(
+            ])
+            ->add('firstname', null, [
                 'label' => 'Prénom',
-            ))
-            ->add('lastname', null, array(
+            ])
+            ->add('lastname', null, [
                 'label' => 'Nom',
-            ))
-            ->add('email', null, array(
+            ])
+            ->add('email', null, [
                 'label' => 'Email',
-            ))
-        ;
+            ]);
     }
 
     /**
@@ -62,32 +61,31 @@ class AdminAdmin extends Admin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('id', null, array(
+            ->addIdentifier('id', null, [
                 'label' => 'ID',
-            ))
-            ->addIdentifier('username', null, array(
+            ])
+            ->addIdentifier('username', null, [
                 'label' => 'Nom d\'utilisateur',
-            ))
-            ->addIdentifier('firstname', null, array(
+            ])
+            ->addIdentifier('firstname', null, [
                 'label' => 'Prénom',
-            ))
-            ->addIdentifier('lastname', null, array(
+            ])
+            ->addIdentifier('lastname', null, [
                 'label' => 'Nom',
-            ))
-            ->add('email', null, array(
+            ])
+            ->add('email', null, [
                 'label' => 'Email',
-            ))
-            ->add('created', null, array(
+            ])
+            ->add('created', null, [
                 'label' => 'Date de création',
-            ))
-            ->add('lastLogin', null, array(
+            ])
+            ->add('lastLogin', null, [
                 'label' => 'Dernier login',
-            ))
-            ->add('roles', null, array(
+            ])
+            ->add('roles', null, [
                 'label'     => 'Permissions',
                 'template'  => 'UserBundle:admin:fields/list_roles.html.twig',
-            ))
-        ;
+            ]);
     }
 
     /**
@@ -95,58 +93,57 @@ class AdminAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $container       = $this->getConfigurationPool()->getContainer();
+        $container = $this->getConfigurationPool()->getContainer();
         $securityContext = $container->get('security.context');
 
         if ($securityContext->isGranted('ROLE_ADMIN')) {
-            $roles = array(
+            $roles = [
                 'ROLE_USER'             => AdminEntity::getRoleString('ROLE_USER'),
                 'ROLE_MODERATOR'        => AdminEntity::getRoleString('ROLE_MODERATOR'),
                 'ROLE_MODERATOR_LEADER' => AdminEntity::getRoleString('ROLE_MODERATOR_LEADER'),
                 'ROLE_SUPER_ADMIN'      => AdminEntity::getRoleString('ROLE_SUPER_ADMIN'),
-            );
+            ];
         } else {
-            $roles = array(
+            $roles = [
                 'ROLE_USER'             => AdminEntity::getRoleString('ROLE_USER'),
                 'ROLE_MODERATOR'        => AdminEntity::getRoleString('ROLE_MODERATOR'),
-            );
+            ];
         }
         $formMapper
-            ->with('Informations personnelles', array(
+            ->with('Informations personnelles', [
                 'description' => '',
                 'class'       => 'col-md-8',
-            ))
-                ->add('username', null, array(
+            ])
+                ->add('username', null, [
                     'label' => 'Nom d\'utilisateur',
-                ))
-                ->add('email', null, array(
+                ])
+                ->add('email', null, [
                     'label' => 'Email',
-                ))
-                ->add('firstname', null, array(
+                ])
+                ->add('firstname', null, [
                     'label' => 'Prénom',
-                ))
-                ->add('lastname', null, array(
+                ])
+                ->add('lastname', null, [
                     'label' => 'Nom',
-                ))
+                ])
             ->end()
-            ->with('Paramétrage', array(
+            ->with('Paramétrage', [
                 'description' => '',
                 'class'       => 'col-md-4',
-            ))
-                ->add('enabled', null, array(
+            ])
+                ->add('enabled', null, [
                     'label' => 'Compte actif',
-                ))
-                ->add('roles', 'choice', array(
+                ])
+                ->add('roles', 'choice', [
                     'multiple'  => true,
                     'choices'   => $roles,
                     'label'     => 'Permissions',
-                ))
-                ->add('plainPassword', 'text', array(
+                ])
+                ->add('plainPassword', 'text', [
                     'label'     => 'Changer le mot de passe',
                     'required'  => false,
-                ))
-            ->end()
-        ;
+                ])
+            ->end();
     }
 
     public function preUpdate($user)

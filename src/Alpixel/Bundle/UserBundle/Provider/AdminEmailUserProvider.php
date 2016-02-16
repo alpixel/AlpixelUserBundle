@@ -16,7 +16,7 @@ use FOS\UserBundle\Security\UserProvider;
 class AdminEmailUserProvider extends UserProvider
 {
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     protected function findUser($username)
     {

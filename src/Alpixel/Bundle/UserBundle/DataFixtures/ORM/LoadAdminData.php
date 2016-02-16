@@ -1,4 +1,5 @@
 <?php
+
 namespace Alpixel\Bundle\UserBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
@@ -15,7 +16,7 @@ class LoadAdminData implements FixtureInterface, ContainerAwareInterface, Ordere
     private $container;
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function setContainer(ContainerInterface $container = null)
     {
@@ -23,7 +24,7 @@ class LoadAdminData implements FixtureInterface, ContainerAwareInterface, Ordere
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function load(ObjectManager $manager)
     {
