@@ -7,12 +7,8 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-/**
- * This is the class that loads and manages your bundle configuration.
- *
- * To learn more see {@link http://symfony.com/doc/current/cookbook/bundles/extension.html}
- */
-class UserExtension extends Extension
+
+class AlpixelUserExtension extends Extension
 {
     /**
      * {@inheritdoc}
@@ -21,8 +17,21 @@ class UserExtension extends Extension
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
+        $this->bindParameters($container, 'alpixel_user', $config);
 
         $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
         $loader->load('services.yml');
+    }
+
+    /**
+     * Binds the params from config
+     *
+     * @param ContainerBuilder $container Containerbuilder
+     * @param string           $name      Alias name
+     * @param array            $config    Configuration Array
+     */
+    public function bindParameters(ContainerBuilder $container, $name, $config)
+    {
+        $container->setParameter('alpixel_user.firewall_templates', $config['firewall_templates']);
     }
 }
