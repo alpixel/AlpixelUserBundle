@@ -1,0 +1,9 @@
+Alpixel\Bundle\AlpixelUserBundle\Entity\Admin:
+   admin_alpixel:
+      username: alpixel
+      email: dev+admin@alpixel.fr
+      plainPassword: 'alpixel'
+      firstname: 'Benjamin'
+      lastname: 'HUBERT'
+      enabled: 1
+      roles: ['ROLE_SUPER_ADMIN']
