@@ -1,21 +1,7 @@
 services:
-    access:
-        class: Alpixel\Bundle\AlpixelUserBundle\Services\AccessManager
-        arguments:    ['@security.context']
-
-    authentication_handler:
-        class: Alpixel\Bundle\AlpixelUserBundle\Handler\AuthenticationHandler
-        arguments:    ['@router']
-
-    user.provider.oauth:
-        class: Alpixel\Bundle\AlpixelUserBundle\Provider\OAuthUserProvider
-        arguments:    ['@fos_user.user_manager',  { facebook: facebookId, twitter: twitterId }, '@event_dispatcher']
-        calls:
-            - [setRequest, ['@request_stack']]
-
     user.admin.admin:
-        class: Alpixel\Bundle\AlpixelUserBundle\Admin\AdminAdmin
-        arguments: [~, Alpixel\Bundle\AlpixelUserBundle\Entity\Admin, UserBundle:AdminAdmin]
+        class: Alpixel\Bundle\UserBundle\Admin\AdminAdmin
+        arguments: [~, Alpixel\Bundle\UserBundle\Entity\Admin, UserBundle:AdminAdmin]
         calls:
             - [ setUserManager, [ '@fos_user.user_manager' ] ]
         tags:

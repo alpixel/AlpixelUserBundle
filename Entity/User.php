@@ -1,6 +1,6 @@
 <?php
 
-namespace Alpixel\Bundle\AlpixelUserBundle\Entity;
+namespace Alpixel\Bundle\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Entity\User as BaseUser;
@@ -24,8 +24,6 @@ abstract class User extends BaseUser
     public function __construct()
     {
         parent::__construct();
-        $this->pushID = [];
-        $this->confirmationToken = sha1(uniqid(uniqid(mt_rand()), true));
         $this->created = new \DateTime();
         $this->activated = false;
         $this->enabled = true;
@@ -57,77 +55,6 @@ abstract class User extends BaseUser
         return 'FOSUserBundle';
     }
 
-    /**
-     * Gets the value of id.
-     *
-     * @return int
-     */
-    public function getID()
-    {
-        return $this->id;
-    }
-
-    /**
-     * Sets the value of id.
-     *
-     * @param int $id the id
-     *
-     * @return self
-     */
-    protected function setID($id)
-    {
-        $this->id = $id;
-
-        return $this;
-    }
-
-    /**
-     * Gets the value of newPassword.
-     *
-     * @return string
-     */
-    public function getNewPassword()
-    {
-        return $this->newPassword;
-    }
-
-    /**
-     * Sets the value of newPassword.
-     *
-     * @param string $newPassword the new password
-     *
-     * @return self
-     */
-    public function setNewPassword($newPassword)
-    {
-        $this->newPassword = $newPassword;
-
-        return $this;
-    }
-
-    /**
-     * Gets the value of uniqid.
-     *
-     * @return string
-     */
-    public function getUniqid()
-    {
-        return $this->uniqid;
-    }
-
-    /**
-     * Sets the value of uniqid.
-     *
-     * @param string $uniqid the uniqid
-     *
-     * @return self
-     */
-    public function setUniqid($uniqid)
-    {
-        $this->uniqid = $uniqid;
-
-        return $this;
-    }
 
     /**
      * Gets the value of created.
@@ -142,7 +69,7 @@ abstract class User extends BaseUser
     /**
      * Sets the value of created.
      *
-     * @param string $created the subscription date
+     * @param string $created the created
      *
      * @return self
      */
@@ -153,13 +80,27 @@ abstract class User extends BaseUser
         return $this;
     }
 
-    public function isActivated()
+    /**
+     * Gets the value of activated.
+     *
+     * @return string
+     */
+    public function getActivated()
     {
         return $this->activated;
     }
 
+    /**
+     * Sets the value of activated.
+     *
+     * @param string $activated the activated
+     *
+     * @return self
+     */
     public function setActivated($activated)
     {
         $this->activated = $activated;
+
+        return $this;
     }
 }

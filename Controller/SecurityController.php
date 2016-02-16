@@ -1,6 +1,6 @@
 <?php
 
-namespace Alpixel\Bundle\AlpixelUserBundle\Controller;
+namespace Alpixel\Bundle\UserBundle\Controller;
 
 use FOS\UserBundle\Controller\SecurityController as BaseController;
 use Symfony\Component\HttpFoundation\RedirectResponse;

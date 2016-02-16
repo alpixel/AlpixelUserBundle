@@ -1,6 +1,6 @@
 <?php
 
-namespace Alpixel\Bundle\AlpixelUserBundle\DataFixtures\ORM;
+namespace Alpixel\Bundle\UserBundle\DataFixtures\ORM;
 
 use Doctrine\Common\DataFixtures\FixtureInterface;
 use Doctrine\Common\DataFixtures\OrderedFixtureInterface;

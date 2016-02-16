@@ -1,8 +1,8 @@
 <?php
 
-namespace Alpixel\Bundle\AlpixelUserBundle\Admin;
+namespace Alpixel\Bundle\UserBundle\Admin;
 
-use Alpixel\Bundle\AlpixelUserBundle\Entity\Admin as AdminEntity;
+use Alpixel\Bundle\UserBundle\Entity\Admin as AdminEntity;
 use FOS\UserBundle\Model\UserManagerInterface;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;

@@ -1,6 +1,6 @@
 <?php
 
-namespace Alpixel\Bundle\AlpixelUserBundle\Entity;
+namespace Alpixel\Bundle\UserBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use FOS\UserBundle\Entity\User as BaseUser;
@@ -49,22 +49,6 @@ class Admin extends BaseUser
     public function getParent()
     {
         return 'FOSUserBundle';
-    }
-
-    public static function getRoleString($key)
-    {
-        $roles = [
-            'ROLE_USER'             => 'Simple utilisateur',
-            'ROLE_MODERATOR'        => 'Modérateur',
-            'ROLE_MODERATOR_LEADER' => 'Chef d\'équipe modérateur',
-            'ROLE_SUPER_ADMIN'      => 'Administrateur du site',
-        ];
-
-        if (!empty($roles[$key])) {
-            return $roles[$key];
-        }
-
-        return $key;
     }
 
     /**

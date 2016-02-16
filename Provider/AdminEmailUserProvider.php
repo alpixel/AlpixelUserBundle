@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-namespace Alpixel\Bundle\AlpixelUserBundle\Provider;
+namespace Alpixel\Bundle\UserBundle\Provider;
 
 use FOS\UserBundle\Security\UserProvider;
 

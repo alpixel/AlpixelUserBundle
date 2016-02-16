@@ -1,8 +1,8 @@
 <?php
 
-namespace Alpixel\Bundle\AlpixelUserBundle\Event;
+namespace Alpixel\Bundle\UserBundle\Event;
 
-use Alpixel\Bundle\AlpixelUserBundle\Entity\User;
+use Alpixel\Bundle\UserBundle\Entity\User;
 use Symfony\Component\EventDispatcher\Event;
 use Symfony\Component\HttpFoundation\Request;
 
