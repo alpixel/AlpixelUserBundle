@@ -55,7 +55,6 @@ abstract class User extends BaseUser
         return 'FOSUserBundle';
     }
 
-
     /**
      * Gets the value of created.
      *
