@@ -1,20 +1,23 @@
 {
     "name": "alpixel/userbundle",
+    "description": "FOSUserBundle integration to Sonata & ALPIXEL tools",
     "type": "symfony-bundle",
+    "keywords": ["alpixel", "user", "userbundle", "symfony2", "symfony", "bundle"],
+    "homepage": "https://www.alpixel.fr",
+    "license": "MIT",
     "authors": [
         {
-            "name": "Benjamin HUBERT",
-            "email": "benjamin@alpixel.fr"
+            "name": "ALPIXEL",
+            "email": "contact@alpixel.fr"
         }
     ],
     "minimum-stability": "dev",
     "require": {
-        "php": ">=5.5.0",
+        "php": ">=5.5",
         "symfony/symfony": ">=2.8",
-        "friendsofsymfony/user-bundle": "@stable"
     },
     "autoload": {
-        "psr-0": {
+        "psr-4": {
             "Alpixel\\Bundle\\AlpixelUserBundle\\": ""
         }
     }

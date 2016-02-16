@@ -11,7 +11,7 @@ The UserBundle provides a Symfony Bundle extending the FOSUserBundle to provide 
 
 ```
 bash
-$ composer require 'alpixel/userbundle:~1.0'
+$ composer require 'alpixel/userbundle:~2.0'
 ```
 
 
