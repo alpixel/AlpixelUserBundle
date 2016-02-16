@@ -2,23 +2,21 @@
 
 namespace Alpixel\Bundle\UserBundle\Provider;
 
+use Alpixel\Bundle\UserBundle\Event\UserEvent;
 use Cocur\Slugify\Slugify;
+use FOS\UserBundle\Doctrine\UserManager;
 use FOS\UserBundle\Model\UserInterface as FOSUserInterface;
+use FOS\UserBundle\Model\UserManagerInterface;
 use HWI\Bundle\OAuthBundle\OAuth\Response\UserResponseInterface;
 use HWI\Bundle\OAuthBundle\Security\Core\User\FOSUBUserProvider;
 use HWI\Bundle\OAuthBundle\Security\Core\User\OAuthAwareUserProviderInterface;
-use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
-use Symfony\Component\Security\Core\User\UserInterface;
-use Alpixel\Bundle\UserBundle\Event\UserEvent;
-use FOS\UserBundle\Doctrine\UserManager;
-use FOS\UserBundle\Model\UserManagerInterface;
-use Symfony\Component\HttpKernel\Debug\TraceableEventDispatcher;
 use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\Security\Core\Exception\UsernameNotFoundException;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 class OAuthUserProvider extends FOSUBUserProvider implements OAuthAwareUserProviderInterface
 {
-
     protected $dispatcher;
     protected $request;
 
@@ -40,7 +38,7 @@ class OAuthUserProvider extends FOSUBUserProvider implements OAuthAwareUserProvi
     }
 
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function loadUserByOAuthUserResponse(UserResponseInterface $response)
     {
@@ -59,8 +57,9 @@ class OAuthUserProvider extends FOSUBUserProvider implements OAuthAwareUserProvi
             throw new UsernameNotFoundException();
         }
     }
+
     /**
-     * {@inheritDoc}
+     * {@inheritdoc}
      */
     public function connect(UserInterface $user, UserResponseInterface $response)
     {
@@ -84,7 +83,7 @@ class OAuthUserProvider extends FOSUBUserProvider implements OAuthAwareUserProvi
 
         $data = $response->getResponse();
 
-        $slugify  = new Slugify();
+        $slugify = new Slugify();
         $nickname = $slugify->slugify($data['first_name']);
 
         // set default values taken from OAuth sign-in provider account
@@ -105,7 +104,7 @@ class OAuthUserProvider extends FOSUBUserProvider implements OAuthAwareUserProvi
         $user->setEnabled(true);
 
         $event = new UserEvent($user, $this->request);
-        $this->dispatcher->dispatch("user.registration.done", $event);
+        $this->dispatcher->dispatch('user.registration.done', $event);
 
         return $user;
     }
