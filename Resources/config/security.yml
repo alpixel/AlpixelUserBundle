@@ -23,7 +23,7 @@ security:
                 path: "%admin_path%/logout"
                 target: "%admin_path%/login"
             remember_me:
-                secret: %secret%
+                secret: "%secret%"
 
     role_hierarchy:
        ROLE_USER: ROLE_USER
