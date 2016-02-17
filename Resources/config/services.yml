@@ -1,7 +1,7 @@
 services:
     user.admin.admin:
         class: Alpixel\Bundle\UserBundle\Admin\AdminAdmin
-        arguments: [~, Alpixel\Bundle\UserBundle\Entity\Admin, UserBundle:AdminAdmin]
+        arguments: [~, Alpixel\Bundle\UserBundle\Entity\Admin, ~]
         calls:
             - [ setUserManager, [ '@fos_user.user_manager' ] ]
         tags:

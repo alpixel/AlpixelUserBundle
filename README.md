@@ -93,6 +93,11 @@ admin:
     resource: '@AlpixelUserBundle/Resources/config/routing.yml'
 ```
 
+* Change security.yml (optionnal)
+
+If you have more than an admin firewall, you should copy the security.yml of the bundle and paste it in your main security.yml to edit it.
+
+
 
 * Customize login page
 
@@ -105,4 +110,12 @@ alpixel_user:
         admin:
             login_template: 'AlpixelUserBundle:admin:pages/back_login.html.twig'
 
+```
+
+You can also simply change the color and the background image of the admin page by overriding these parameters
+
+```
+alpixel_user:
+    default_login_background_image: '../../bundles/alpixeluser/img/background.jpg'
+    default_login_background_color: '#ff656c'
 ```

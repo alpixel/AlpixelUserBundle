@@ -18,17 +18,6 @@ class AdminAdmin extends Admin
 
         $query = parent::createQuery($context);
 
-        if (!$securityContext->isGranted('ROLE_ADMIN')) {
-            $andx = $query->expr()->andx();
-
-            $andx->add($query->expr()->notlike($query->getRootAlias().'.roles', ':nope'));
-            $andx->add($query->expr()->notlike($query->getRootAlias().'.roles', ':nope2'));
-
-            $query->andWhere($andx);
-            $query->setParameter('nope', '%ROLE_ADMIN%');
-            $query->setParameter('nope2', '%ROLE_SUPER_ADMIN%');
-        }
-
         return $query;
     }
 
@@ -81,10 +70,6 @@ class AdminAdmin extends Admin
             ])
             ->add('lastLogin', null, [
                 'label' => 'Dernier login',
-            ])
-            ->add('roles', null, [
-                'label'     => 'Permissions',
-                'template'  => 'UserBundle:admin:fields/list_roles.html.twig',
             ]);
     }
 
@@ -96,19 +81,11 @@ class AdminAdmin extends Admin
         $container = $this->getConfigurationPool()->getContainer();
         $securityContext = $container->get('security.context');
 
-        if ($securityContext->isGranted('ROLE_ADMIN')) {
-            $roles = [
-                'ROLE_USER'             => AdminEntity::getRoleString('ROLE_USER'),
-                'ROLE_MODERATOR'        => AdminEntity::getRoleString('ROLE_MODERATOR'),
-                'ROLE_MODERATOR_LEADER' => AdminEntity::getRoleString('ROLE_MODERATOR_LEADER'),
-                'ROLE_SUPER_ADMIN'      => AdminEntity::getRoleString('ROLE_SUPER_ADMIN'),
-            ];
-        } else {
-            $roles = [
-                'ROLE_USER'             => AdminEntity::getRoleString('ROLE_USER'),
-                'ROLE_MODERATOR'        => AdminEntity::getRoleString('ROLE_MODERATOR'),
-            ];
-        }
+        $roles = [
+            'ROLE_USER' => 'Simple utilisateur',
+            'ROLE_ADMIN' => 'Administrateur',
+        ];
+
         $formMapper
             ->with('Informations personnelles', [
                 'description' => '',

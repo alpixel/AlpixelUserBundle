@@ -33,5 +33,7 @@ class AlpixelUserExtension extends Extension
     public function bindParameters(ContainerBuilder $container, $name, $config)
     {
         $container->setParameter('alpixel_user.firewall_templates', $config['firewall_templates']);
+        $container->setParameter('alpixel_user.default_login_background_image', $config['default_login_background_image']);
+        $container->setParameter('alpixel_user.default_login_background_color', $config['default_login_background_color']);
     }
 }

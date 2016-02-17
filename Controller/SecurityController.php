@@ -10,30 +10,21 @@ class SecurityController extends BaseController
 {
     public function renderLogin(array $data)
     {
-        $firewalls = $this->container->getMethod('security.firewall.map');
+        $request = $this->container->get('request');
 
-        dump($firewalls);
-        foreach ($firewalls as $firewall) {
-            dump($firewall);
+        $template = 'AlpixelUserBundle:admin:page/login.html.twig';
+
+        $firewallTemplates = $this->container->getParameter('alpixel_user.firewall_templates');
+        foreach ($firewallTemplates as $template) {
+            if (strstr($template['login_path'], $request->getPathinfo()) !== false) {
+                $template = $template['login_template'];
+                break;
+            }
         }
-        die;
-        // $token = $this->container->get('security.context')->getToken();
 
-        // if
-        // $providerKey = $securitContext->getToken()->getProviderKey();
-        // dump($providerKey);die;
-
-        // $firewallTemplates = $this->container->getParameter('alpixel_user.firewall_templates');
-        // $requestAttributes = $this->container->get('request')->attributes;
-
-        // if ($requestAttributes->get('_route') == 'admin_login') {
-        //     $template = 'UserBundle:admin:pages/back_login.html.twig';
-        // } elseif ($requestAttributes->get('_route') == 'front_login') {
-        //     $template = 'AccountBundle:front:pages/front_login.html.twig';
-        // } else {
-        //     $template = 'AccountBundle:front:blocks/block_login.html.twig';
-        // }
-
-        return $this->container->get('templating')->renderResponse($template, $data);
+        return $this->container->get('templating')->renderResponse($template, array_merge($data, [
+            'background_image' => $this->container->getParameter('alpixel_user.default_login_background_image'),
+            'color' => $this->container->getParameter('alpixel_user.default_login_background_color'),
+        ]));
     }
 }
