@@ -7,7 +7,6 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Loader;
 use Symfony\Component\HttpKernel\DependencyInjection\Extension;
 
-
 class AlpixelUserExtension extends Extension
 {
     /**
@@ -24,7 +23,7 @@ class AlpixelUserExtension extends Extension
     }
 
     /**
-     * Binds the params from config
+     * Binds the params from config.
      *
      * @param ContainerBuilder $container Containerbuilder
      * @param string           $name      Alias name

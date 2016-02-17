@@ -2,9 +2,7 @@
 
 namespace Alpixel\Bundle\UserBundle\Tests\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-
-class AdminUser extends \PHPUnit_Framework_TestCase
+class UserTest extends \PHPUnit_Framework_TestCase
 {
     public function testToString()
     {

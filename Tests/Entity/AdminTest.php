@@ -3,7 +3,6 @@
 namespace Alpixel\Bundle\UserBundle\Tests\Entity;
 
 use Alpixel\Bundle\UserBundle\Entity\Admin;
-use Doctrine\Common\Collections\ArrayCollection;
 
 class AdminTest extends \PHPUnit_Framework_TestCase
 {
