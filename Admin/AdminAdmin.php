@@ -2,7 +2,6 @@
 
 namespace Alpixel\Bundle\UserBundle\Admin;
 
-use Alpixel\Bundle\UserBundle\Entity\Admin as AdminEntity;
 use FOS\UserBundle\Model\UserManagerInterface;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -82,7 +81,7 @@ class AdminAdmin extends Admin
         $securityContext = $container->get('security.context');
 
         $roles = [
-            'ROLE_USER' => 'Simple utilisateur',
+            'ROLE_USER'  => 'Simple utilisateur',
             'ROLE_ADMIN' => 'Administrateur',
         ];
 
