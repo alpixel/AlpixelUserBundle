@@ -18,8 +18,10 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
             ->scalarNode('default_login_background_image')
+                ->isRequired(true)
             ->end()
             ->scalarNode('default_login_background_color')
+                ->isRequired(true)
             ->end()
             ->arrayNode('firewall_templates')
             ->prototype('array')
