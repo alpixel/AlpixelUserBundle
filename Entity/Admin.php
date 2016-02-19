@@ -51,22 +51,6 @@ class Admin extends BaseUser
         return 'FOSUserBundle';
     }
 
-    public static function getRoleString($key)
-    {
-        $roles = [
-            'ROLE_USER'             => 'Simple utilisateur',
-            'ROLE_MODERATOR'        => 'Modérateur',
-            'ROLE_MODERATOR_LEADER' => 'Chef d\'équipe modérateur',
-            'ROLE_SUPER_ADMIN'      => 'Administrateur du site',
-        ];
-
-        if (!empty($roles[$key])) {
-            return $roles[$key];
-        }
-
-        return $key;
-    }
-
     /**
      * Gets the value of id.
      *

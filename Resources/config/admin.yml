@@ -1,0 +1,9 @@
+services:
+    alpixel.user.admin:
+        class: Alpixel\Bundle\UserBundle\Entity\User
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Utilisateurs, label: Utilisateurs }
+        arguments:
+            - ~
+            - Alpixel\Bundle\UserBundle\Entity\User
+            - ~

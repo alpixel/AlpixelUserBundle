@@ -1,0 +1,8 @@
+services:
+    user.admin.admin:
+        class: Alpixel\Bundle\UserBundle\Admin\AdminAdmin
+        arguments: [~, Alpixel\Bundle\UserBundle\Entity\Admin, ~]
+        calls:
+            - [ setUserManager, [ '@fos_user.user_manager' ] ]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: 'Utilisateurs', label: 'Administrateurs'}
