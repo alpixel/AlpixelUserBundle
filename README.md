@@ -3,7 +3,7 @@ AlpixelUserBundle
 
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/803e613c-6e74-4774-9bec-e529adbdb27e/mini.png)](https://insight.sensiolabs.com/projects/803e613c-6e74-4774-9bec-e529adbdb27e)
 [![Build Status](https://travis-ci.org/alpixel/AlpixelUserBundle.svg?branch=master)](https://travis-ci.org/alpixel/AlpixelUserBundle)
-[![StyleCI](https://styleci.io/repos/50039486/shield)](https://styleci.io/repos/50039486)
+[![StyleCI](https://styleci.io/repos/50055973/shield)](https://styleci.io/repos/50055973)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/alpixel/AlpixelUserBundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/alpixel/AlpixelUserBundle/?branch=master)
 [![Latest Stable Version](https://poser.pugx.org/alpixel/userbundle/v/stable)](https://packagist.org/packages/alpixel/userbundle)
 
