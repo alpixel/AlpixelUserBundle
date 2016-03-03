@@ -41,7 +41,6 @@ security:
             hash_algorithm: sha512
             encode_as_base64: true
             iterations: 5000
-            iterations: 1000
             key_length: 40
 
 alpixel_user:
