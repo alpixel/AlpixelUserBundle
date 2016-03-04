@@ -14,9 +14,9 @@ class SecurityController extends BaseController
         $template = 'AlpixelUserBundle:admin:page/login.html.twig';
 
         $firewallTemplates = $this->container->getParameter('alpixel_user.firewall_templates');
-        foreach ($firewallTemplates as $template) {
-            if (strstr($template['login_path'], $request->getPathinfo()) !== false) {
-                $template = $template['login_template'];
+        foreach ($firewallTemplates as $templateParam) {
+            if (strstr($templateParam['login_path'], $request->getPathinfo()) !== false) {
+                $template = $templateParam['login_template'];
                 break;
             }
         }
