@@ -21,7 +21,7 @@ class SecurityController extends BaseController
                 break;
             }
         }
-        
+
         return $this->container->get('templating')->renderResponse($template, array_merge($data, [
             'background_image' => $this->container->getParameter('alpixel_user.default_login_background_image'),
             'color'            => $this->container->getParameter('alpixel_user.default_login_background_color'),
