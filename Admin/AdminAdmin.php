@@ -3,18 +3,18 @@
 namespace Alpixel\Bundle\UserBundle\Admin;
 
 use FOS\UserBundle\Model\UserManagerInterface;
+use Sonata\AdminBundle\Admin\AbstractAdmin;
 use Sonata\AdminBundle\Admin\Admin;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 
-class AdminAdmin extends Admin
+class AdminAdmin extends AbstractAdmin
 {
+    protected $userManager;
+    
     public function createQuery($context = 'list')
     {
-        $container = $this->getConfigurationPool()->getContainer();
-        $securityContext = $container->get('security.context');
-
         $query = parent::createQuery($context);
 
         return $query;
@@ -77,12 +77,9 @@ class AdminAdmin extends Admin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $container = $this->getConfigurationPool()->getContainer();
-        $securityContext = $container->get('security.context');
-
         $roles = [
             'ROLE_USER'  => 'Simple utilisateur',
-            'ROLE_ADMIN' => 'Administrateur',
+            'ROLE_SUPER_ADMIN' => 'Administrateur',
         ];
 
         $formMapper
