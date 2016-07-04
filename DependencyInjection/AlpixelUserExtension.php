@@ -18,7 +18,7 @@ class AlpixelUserExtension extends Extension
         $config = $this->processConfiguration($configuration, $configs);
         $this->bindParameters($container, 'alpixel_user', $config);
 
-        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__.'/../Resources/config'));
+        $loader = new Loader\YamlFileLoader($container, new FileLocator(__DIR__ . '/../Resources/config'));
         $loader->load('services.yml');
     }
 
@@ -31,6 +31,7 @@ class AlpixelUserExtension extends Extension
      */
     public function bindParameters(ContainerBuilder $container, $name, $config)
     {
+        $container->setParameter('alpixel_user.role_descriptions', $config['role_descriptions']);
         $container->setParameter('alpixel_user.firewall_templates', $config['firewall_templates']);
         $container->setParameter('alpixel_user.default_login_background_image', $config['default_login_background_image']);
         $container->setParameter('alpixel_user.default_login_background_color', $config['default_login_background_color']);

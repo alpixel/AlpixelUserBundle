@@ -17,6 +17,15 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
+            ->arrayNode('role_descriptions')
+                ->defaultValue([
+                    'ROLE_USER'        => 'Simple utilisateur',
+                    'ROLE_SUPER_ADMIN' => 'Administrateur'
+                ])
+                ->useAttributeAsKey('name')
+                ->prototype('variable')
+                ->end()
+            ->end()
             ->scalarNode('default_login_background_image')
                 ->isRequired(true)
             ->end()

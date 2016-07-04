@@ -49,16 +49,16 @@ class AdminAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('id', null, [
+            ->add('id', null, [
                 'label' => 'ID',
             ])
-            ->addIdentifier('username', null, [
+            ->add('username', null, [
                 'label' => 'Nom d\'utilisateur',
             ])
-            ->addIdentifier('firstname', null, [
+            ->add('firstname', null, [
                 'label' => 'Prénom',
             ])
-            ->addIdentifier('lastname', null, [
+            ->add('lastname', null, [
                 'label' => 'Nom',
             ])
             ->add('email', null, [
@@ -69,6 +69,11 @@ class AdminAdmin extends AbstractAdmin
             ])
             ->add('lastLogin', null, [
                 'label' => 'Dernier login',
+            ])
+            ->add('_action', 'actions', [
+                'actions' => [
+                    'edit'   => [],
+                ],
             ]);
     }
 
@@ -77,10 +82,7 @@ class AdminAdmin extends AbstractAdmin
      */
     protected function configureFormFields(FormMapper $formMapper)
     {
-        $roles = [
-            'ROLE_USER'  => 'Simple utilisateur',
-            'ROLE_SUPER_ADMIN' => 'Administrateur',
-        ];
+        $container = $this->getConfigurationPool()->getContainer();
 
         $formMapper
             ->with('Informations personnelles', [
@@ -109,7 +111,7 @@ class AdminAdmin extends AbstractAdmin
                 ])
                 ->add('roles', 'choice', [
                     'multiple'  => true,
-                    'choices'   => $roles,
+                    'choices'   => $container->getParameter('alpixeL_user.role_descriptions'),
                     'label'     => 'Permissions',
                 ])
                 ->add('plainPassword', 'text', [
