@@ -9,7 +9,7 @@ class SecurityController extends BaseController
 {
     public function renderLogin(array $data)
     {
-        $request = $this->container->get('request');
+        $request = $this->container->get('request_stack')->getCurrentRequest();
 
         $template = 'AlpixelUserBundle:admin:page/login.html.twig';
 
