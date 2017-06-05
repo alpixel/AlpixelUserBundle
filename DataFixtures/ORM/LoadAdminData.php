@@ -7,6 +7,7 @@ use Doctrine\Common\DataFixtures\OrderedFixtureInterface;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
+use Nelmio\Alice\Loader\NativeLoader;
 
 class LoadAdminData implements FixtureInterface, ContainerAwareInterface, OrderedFixtureInterface
 {
