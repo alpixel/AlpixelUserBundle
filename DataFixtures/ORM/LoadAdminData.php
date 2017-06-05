@@ -28,7 +28,12 @@ class LoadAdminData implements FixtureInterface, ContainerAwareInterface, Ordere
      */
     public function load(ObjectManager $manager)
     {
-        \Nelmio\Alice\Fixtures::load(__DIR__.'/../../Resources/fixtures/admin.yml', $manager);
+        $loader = new NativeLoader();
+        $objectSet = $loader->loadFile(__DIR__ . '/../../Resources/fixtures/admin.yml');
+        foreach ($objectSet->getObjects() as $obj) {
+            $manager->persist($obj);
+        }
+        $manager->flush();
     }
 
     public function getOrder()
