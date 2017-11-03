@@ -12,7 +12,7 @@ use Sonata\AdminBundle\Form\FormMapper;
 class AdminAdmin extends AbstractAdmin
 {
     protected $userManager;
-    
+
     public function createQuery($context = 'list')
     {
         $query = parent::createQuery($context);
@@ -84,6 +84,21 @@ class AdminAdmin extends AbstractAdmin
     {
         $container = $this->getConfigurationPool()->getContainer();
 
+        $optionsRoles = [
+            'multiple'  => true,
+            'label'     => 'Permissions',
+        ];
+
+        if (\AppKernel::VERSION_ID >= 20700) {
+            $optionsRoles['choices'] = array_flip($container->getParameter('alpixel_user.role_descriptions'));
+
+            if (\AppKernel::VERSION_ID < 30000) {
+                $optionsRoles['choices_as_values'] = true;
+            }
+        } else {
+            $optionsRoles['choices'] = $container->getParameter('alpixel_user.role_descriptions');
+        }
+
         $formMapper
             ->with('Informations personnelles', [
                 'description' => '',
@@ -109,11 +124,7 @@ class AdminAdmin extends AbstractAdmin
                 ->add('enabled', null, [
                     'label' => 'Compte actif',
                 ])
-                ->add('roles', 'choice', [
-                    'multiple'  => true,
-                    'choices'   => $container->getParameter('alpixeL_user.role_descriptions'),
-                    'label'     => 'Permissions',
-                ])
+                ->add('roles', 'choice', $optionsRoles)
                 ->add('plainPassword', 'text', [
                     'label'     => 'Changer le mot de passe',
                     'required'  => false,
